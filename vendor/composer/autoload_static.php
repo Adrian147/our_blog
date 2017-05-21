@@ -15,7 +15,14 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Routing\\' => 26,
+            'Symfony\\Component\\HttpKernel\\' => 29,
             'Symfony\\Component\\HttpFoundation\\' => 33,
+            'Symfony\\Component\\EventDispatcher\\' => 34,
+            'Symfony\\Component\\Debug\\' => 24,
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
         ),
     );
 
@@ -28,9 +35,25 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
         ),
+        'Symfony\\Component\\HttpKernel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/http-kernel',
+        ),
         'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
+        ),
+        'Symfony\\Component\\EventDispatcher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
+        ),
+        'Symfony\\Component\\Debug\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/debug',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
     );
 
