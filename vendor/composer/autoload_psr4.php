@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'TestBlog\\' => array($baseDir . '/src/test_blog'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Routing\\' => array($vendorDir . '/symfony/routing'),
     'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
@@ -14,5 +15,4 @@ return array(
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Simplex\\' => array($baseDir . '/src/simplex'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
-    'LeapYear\\' => array($baseDir . '/src/leap_year'),
 );

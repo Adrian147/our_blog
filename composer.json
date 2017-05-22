@@ -6,6 +6,6 @@
     },
     "autoload": {
         "psr-4": {  "Simplex\\": "src/simplex/",
-                    "LeapYear\\": "src/leap_year/"}
+                    "TestBlog\\": "src/test_blog/"}
     }
 }

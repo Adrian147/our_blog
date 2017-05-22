@@ -1,6 +1,6 @@
 <?php
 
-namespace LeapYear\Modal;
+namespace TestBlog\Modal;
 
 class YearModal{
     function is_leap_year($year){

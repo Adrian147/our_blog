@@ -5,7 +5,7 @@
     use Symfony\Component\Routing;
     use Symfony\Component\HttpKernel;
     use Simplex\Framework;
-    use LeapYear\Controller\YearController;
+    use TestBlog\Controller\YearController;
 
     $request = HttpFoundation\Request::createFromGlobals();
     $controllerResolver = new HttpKernel\Controller\ControllerResolver();
