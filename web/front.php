@@ -12,16 +12,12 @@
     $argumentResolver = new HttpKernel\Controller\ArgumentResolver();
 
     $routes = new Routing\RouteCollection();
-    $routes->add('leap_year', new Routing\Route(
-        '/is_leap_year/{year}',
-            array('year' => 2016,
-                  '_controller' =>
-                         'LeapYear\Controller\YearController::leapAction',)));
-
+    require __DIR__.'/../src/routes.php';
+    
     $content = new Routing\RequestContext($request);
     $matcher = new Routing\Matcher\UrlMatcher($routes, $content);
 
-    $simplex = new Framework($matcher, $controllerResolver, $argumentResolver);
-    $response = $simplex->handle($request);
+    $framework = new Framework($matcher, $controllerResolver, $argumentResolver);
+    $response = $framework->handle($request);
 
     $response->send();
