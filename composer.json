@@ -5,6 +5,7 @@
         "symfony/http-kernel": "^3.2"
     },
     "autoload": {
-        "psr-4": { "Simplex\\": "src/simplex/" }
+        "psr-4": {  "Simplex\\": "src/simplex/",
+                    "LeapYear\\": "src/leap_year/"}
     }
 }

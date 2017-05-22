@@ -14,4 +14,5 @@ return array(
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Simplex\\' => array($baseDir . '/src/simplex'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'LeapYear\\' => array($baseDir . '/src/leap_year'),
 );

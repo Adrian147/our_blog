@@ -5,7 +5,7 @@
     use Symfony\Component\Routing;
     use Symfony\Component\HttpKernel;
     use Simplex\Framework;
-    require_once 'YearController.php';
+    use LeapYear\Controller\YearController;
 
     $request = HttpFoundation\Request::createFromGlobals();
     $controllerResolver = new HttpKernel\Controller\ControllerResolver();
@@ -15,7 +15,8 @@
     $routes->add('leap_year', new Routing\Route(
         '/is_leap_year/{year}',
             array('year' => 2016,
-                  '_controller' => 'YearController::leapAction',)));
+                  '_controller' =>
+                         'LeapYear\Controller\YearController::leapAction',)));
 
     $content = new Routing\RequestContext($request);
     $matcher = new Routing\Matcher\UrlMatcher($routes, $content);
@@ -24,8 +25,3 @@
     $response = $simplex->handle($request);
 
     $response->send();
-
-
-function is_leap_year($year){
-    return $year%4 == 0;
-}
