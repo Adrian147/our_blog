@@ -2,21 +2,21 @@
 namespace TestBlog\Controller;
 
 use Symfony\Component\HttpFoundation;
-use LeapYear\Modal\YearModal;
+use LeapYear\Modal\BlogModal;
 
-class YearController{
-    function leapAction(HttpFoundation\Request $request){
+class BlogController{
+    function blogpostAction(HttpFoundation\Request $request){
         $id = $request->attributes->get('id');
         $answer = 'Asking for a blog page with id -> '.$id;
         return new HttpFoundation\Response($answer);
     }
 
-    function jumpAction(HttpFoundation\Request $request){
+    function bloglistAction(HttpFoundation\Request $request){
         $answer = 'Asking for a blog table listing';
         return new HttpFoundation\Response($answer);
     }
 
-    function crawlAction(HttpFoundation\Request $request){
+    function tagstableAction(HttpFoundation\Request $request){
         $id = $request->attributes->get('id');
         $answer = 'Asking for a blog entries with tag id -> '.$id;
         return new HttpFoundation\Response($answer);

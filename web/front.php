@@ -5,7 +5,7 @@
     use Symfony\Component\Routing;
     use Symfony\Component\HttpKernel;
     use Simplex\Framework;
-    use TestBlog\Controller\YearController;
+    use TestBlog\Controller\BlogController;
 
     $request = HttpFoundation\Request::createFromGlobals();
     $controllerResolver = new HttpKernel\Controller\ControllerResolver();
@@ -13,7 +13,7 @@
 
     $routes = new Routing\RouteCollection();
     require __DIR__.'/../src/routes.php';
-    
+
     $content = new Routing\RequestContext($request);
     $matcher = new Routing\Matcher\UrlMatcher($routes, $content);
 

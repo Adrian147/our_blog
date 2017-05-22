@@ -2,7 +2,7 @@
 
 namespace TestBlog\Modal;
 
-class YearModal{
+class BlogModal{
     function is_leap_year($year){
         return $year%4 == 0;
     }

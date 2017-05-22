@@ -7,7 +7,7 @@ use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
-use TestBlog\Controller\YearController;
+use TestBlog\Controller\BlogController;
 //require_once __DIR__.'/../../web/YearController.php';
 
 class Framework {
