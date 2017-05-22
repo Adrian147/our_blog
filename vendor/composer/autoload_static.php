@@ -19,6 +19,7 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
             'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Debug\\' => 24,
+            'Simplex\\' => 8,
         ),
         'P' => 
         array (
@@ -50,6 +51,10 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
         'Symfony\\Component\\Debug\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/debug',
+        ),
+        'Simplex\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/simplex',
         ),
         'Psr\\Log\\' => 
         array (
