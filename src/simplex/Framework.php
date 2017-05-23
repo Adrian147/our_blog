@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use TestBlog\Controller\BlogController;
+use Render\RenderArray;
 //require_once __DIR__.'/../../web/YearController.php';
 
 class Framework {
@@ -40,7 +41,8 @@ class Framework {
             if ($controller_return instanceof Response) {
                 $response = $controller_return;
             }else{
-                $response = new Response(json_encode($controller_return));
+                $rendered = (new RenderArray())->preHandle($controller_return);
+                $response = new Response($rendered);
             }
             return $response;
         } catch (ResourceNotFoundException $e) {

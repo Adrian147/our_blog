@@ -14,5 +14,6 @@ return array(
     'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Simplex\\' => array($baseDir . '/src/simplex'),
+    'Render\\' => array($baseDir . '/src/Render'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
 );

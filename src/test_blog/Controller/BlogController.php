@@ -3,8 +3,8 @@ namespace TestBlog\Controller;
 
 
 use Symfony\Component\HttpFoundation;
-use TestBlog\Modal\DBModal;
-use TestBlog\Modal\BlogModal;
+use TestBlog\Model\DBModel;
+use TestBlog\Model\BlogModel;
 use PDO;
 
 //Need to change respose value.
@@ -17,16 +17,16 @@ use PDO;
 class BlogController{
     function blogpostAction(HttpFoundation\Request $request){
         $id = $request->attributes->get('id');
-        $post = DBModal::get_post_by_id($id);
-        $tag_ids = DBModal::get_tags_by_blog_id($id);
-        $tags = BlogModal::tags_from_tag_ids($tag_ids);
-        $render_array = BlogModal::page_to_render_array($post, $tags);
+        $post = DBModel::get_post_by_id($id);
+        $tag_ids = DBModel::get_tags_by_blog_id($id);
+        $tags = BlogModel::tags_from_tag_ids($tag_ids);
+        $render_array = BlogModel::page_to_render_array($post, $tags);
         return $render_array;
     }
 
     function bloglistAction(HttpFoundation\Request $request){
-        $post = DBModal::get_blog_entries();
-        $render_array = BlogModal::table_to_render_array($post, 'Blog Posts');
+        $post = DBModel::get_blog_entries();
+        $render_array = BlogModel::table_to_render_array($post, 'Blog Posts');
         return $render_array;
     }
 
@@ -34,11 +34,11 @@ class BlogController{
     //Serve the render array
     function tagstableAction(HttpFoundation\Request $request){
         $id = $request->attributes->get('id');
-        $tag = DBModal::get_tag_by_id($id);
-        $blog_ids = DBModal::get_blogs_by_tag_id($id);
-        $posts = BlogModal::posts_from_blog_ids($blog_ids);
+        $tag = DBModel::get_tag_by_id($id);
+        $blog_ids = DBModel::get_blogs_by_tag_id($id);
+        $posts = BlogModel::posts_from_blog_ids($blog_ids);
         //echo json_encode($posts).'<br><br>';
-        $render_array = BlogModal::tag_to_render_array($tag, $posts);
+        $render_array = BlogModel::tag_to_render_array($tag, $posts);
         return $render_array;
     }
 }

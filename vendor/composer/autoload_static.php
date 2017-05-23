@@ -25,6 +25,10 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
             'Symfony\\Component\\Debug\\' => 24,
             'Simplex\\' => 8,
         ),
+        'R' => 
+        array (
+            'Render\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -63,6 +67,10 @@ class ComposerStaticInit0fa76044fa79e7dcc2307c2f07a41170
         'Simplex\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/simplex',
+        ),
+        'Render\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Render',
         ),
         'Psr\\Log\\' => 
         array (
