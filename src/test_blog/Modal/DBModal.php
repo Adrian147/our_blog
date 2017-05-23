@@ -21,7 +21,7 @@ class DBModal{
     function get_blog_entries() {
         try{
             $conn = DBModal::start_db_connection();
-            $query = 'SELECT title, author_name FROM blog_entry';
+            $query = 'SELECT id, title, author_name FROM blog_entry';
             $result = $conn->query($query);
 
             $posts = $result->fetchAll(PDO::FETCH_ASSOC);

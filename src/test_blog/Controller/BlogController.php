@@ -12,6 +12,8 @@ use PDO;
 //tags aren't properly returned.
 //Need format for page render array.
 //need to add server address to page to render array.
+//check if data exists in database.
+
 class BlogController{
     function blogpostAction(HttpFoundation\Request $request){
         $id = $request->attributes->get('id');
@@ -19,13 +21,13 @@ class BlogController{
         $tag_ids = DBModal::get_tags_by_blog_id($id);
         $tags = BlogModal::tags_from_tag_ids($tag_ids);
         $render_array = BlogModal::page_to_render_array($post, $tags);
-        return new HttpFoundation\Response(json_encode($render_array));
+        return $render_array;
     }
 
     function bloglistAction(HttpFoundation\Request $request){
         $post = DBModal::get_blog_entries();
         $render_array = BlogModal::table_to_render_array($post, 'Blog Posts');
-        return new HttpFoundation\Response(json_encode($render_array));
+        return $render_array;
     }
 
     //need to check for wrong id.
@@ -35,7 +37,8 @@ class BlogController{
         $tag = DBModal::get_tag_by_id($id);
         $blog_ids = DBModal::get_blogs_by_tag_id($id);
         $posts = BlogModal::posts_from_blog_ids($blog_ids);
+        //echo json_encode($posts).'<br><br>';
         $render_array = BlogModal::tag_to_render_array($tag, $posts);
-        return new HttpFoundation\Response(json_encode($render_array));
+        return $render_array;
     }
 }

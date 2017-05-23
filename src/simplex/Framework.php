@@ -35,7 +35,14 @@ class Framework {
             $arguments =
                   $this->argumentResolver->getArguments($request, $controller);
 
-            return call_user_func_array($controller, $arguments);
+            $controller_return = call_user_func_array($controller, $arguments);
+
+            if ($controller_return instanceof Response) {
+                $response = $controller_return;
+            }else{
+                $response = new Response(json_encode($controller_return));
+            }
+            return $response;
         } catch (ResourceNotFoundException $e) {
             return new Response('Not Found!!', 404);
         }   catch (Exception $e) {

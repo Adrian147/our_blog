@@ -70,9 +70,12 @@ class BlogModal{
         $tags = array();
 
         foreach($tag_ids as $id) {
-            $tags[] = $tags_array[$id['tag_id']];
+            foreach($tags_array as $tag){
+                if($tag['id'] == $id['tag_id']){
+                    $tags[] = $tag;
+                }
+            }
         }
-
         return $tags;
     }
 
@@ -80,8 +83,13 @@ class BlogModal{
         $posts_array = DBModal::get_blog_entries();
         $posts = array();
 
+        //filtering entries by the blog_id
         foreach($blog_ids as $id) {
-            $posts[] = $posts_array[$id['blog_id']];
+            foreach($posts_array as $post){
+                if($post['id'] == $id['blog_id']){
+                    $posts[] = $post;
+                }
+            }
         }
 
         return $posts;
