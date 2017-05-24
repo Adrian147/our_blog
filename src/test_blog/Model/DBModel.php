@@ -5,9 +5,17 @@ namespace TestBlog\Model;
 use Symfony\Component\HttpFoundation;
 use PDO;
 
+/**
+ * Define methods to interact with Database.
+ */
 class DBModel
 {
-    function startDBConnection()
+    /**
+     * Start a connection with the mysql database with credentials
+     *
+     * @return PDO $conn object to make database queries
+     */
+    public function startDBConnection()
     {
         $conn = new PDO("mysql:host=127.0.0.1;dbname=testblog_db",
                    'root', 'qwerty123');
@@ -16,12 +24,22 @@ class DBModel
         return $conn;
     }
 
-    function closeDBConnection(&$conn)
+    /**
+     * Close the database connection
+     *
+     * @param PDO $conn php object to make database queries
+     */
+    public function closeDBConnection(&$conn)
     {
         $conn = null;
     }
 
-    function getBlogEntries()
+    /**
+     * Return data for all post on the blog
+     *
+     * @return $posts with all blog post data
+     */
+    public function getBlogEntries()
     {
         try {
             $conn = DBModel::startDBConnection();
@@ -38,7 +56,12 @@ class DBModel
         }
     }
 
-    function getTagEntries()
+    /**
+     * Return data for all tags with ids from the database
+     *
+     * @return $tags array of tag data
+     */
+    public function getTagEntries()
     {
         try {
             $conn = DBModel::startDBConnection();
@@ -55,7 +78,13 @@ class DBModel
         }
     }
 
-    function getPostbyId($id)
+    /**
+     * Return data of a post with given id
+     *
+     * @param $id id of the post required
+     * @return $post database query data
+     */
+    public function getPostbyId($id)
     {
         try {
             $conn = DBModel::startDBConnection();
@@ -75,7 +104,13 @@ class DBModel
         }
     }
 
-    function getTagbyId($id)
+    /**
+     * Return data of a tag with given id
+     *
+     * @param $id id of the tag required
+     * @return $tag database query data
+     */
+    public function getTagbyId($id)
     {
         try {
             $conn = DBModel::startDBConnection();
@@ -95,7 +130,13 @@ class DBModel
         }
     }
 
-    function getTagsbyBlogId($id)
+    /**
+     * Return tag ids associated with the blog id
+     *
+     * @param $id blog post id
+     * @return $tagIds tag ids used in the blog post
+     */
+    public function getTagsbyBlogId($id)
     {
         try {
             $conn = DBModel::startDBConnection();
@@ -115,7 +156,13 @@ class DBModel
         }
     }
 
-    function getBlogsbyTagId($id)
+    /**
+     * Return blog ids associated with the tag id
+     *
+     * @param $id tag id
+     * @return $blogIds blog ids using the tag
+     */
+    public function getBlogsbyTagId($id)
     {
         try {
             $conn = DBModel::startDBConnection();

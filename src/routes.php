@@ -1,5 +1,9 @@
 <?php
+    /**
+     *  Defines the Routes for the application with their controllers.
+     */
     use Symfony\Component\Routing\Route;
+
     $routes->add('blog_page', new Route(
         '/blog/{id}',
         array('_controller' =>

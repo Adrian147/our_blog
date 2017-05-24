@@ -1,4 +1,7 @@
 <?php
+/**
+ * Blog Application using the Symfony framework
+*/
 namespace Simplex;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -10,6 +13,13 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use TestBlog\Controller\BlogController;
 use Render\RenderArray;
 
+/**
+  * Blog Application using the Symfony framework
+  *
+  * @var UrlMatcher $matcher used to match route from Request Object.
+  * @var ControllerResolver $controllerResolver appoint controller for route
+  * @var $ArgumentResolver $argumentResolver return argument list for controller
+*/
 class Framework
 {
     protected $matcher;
@@ -23,6 +33,13 @@ class Framework
         $this->argumentResolver = $argumentResolver;
     }
 
+    /**
+     * Provide a Symfony Response object for an entered Request
+     *
+     * @param Request $request Object containing the Request details
+     * @return Response $$response Object sent back to user
+     * @throws RescourceNotFoundException when requested route(url) is not found
+     */
     public function handle(Request $request)
     {
         //return new Response('', 404);

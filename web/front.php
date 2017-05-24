@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Front Controller of the Blog Application
+     *
+     * Takes all Request and sends back Appropriate Responses
+     */
     require_once __DIR__.'/../vendor/autoload.php';
 
     use Symfony\Component\HttpFoundation\Request;
