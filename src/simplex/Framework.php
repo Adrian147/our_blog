@@ -9,22 +9,22 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use TestBlog\Controller\BlogController;
 use Render\RenderArray;
-//require_once __DIR__.'/../../web/YearController.php';
 
-class Framework {
+class Framework
+{
     protected $matcher;
     protected $controllerResolver;
     protected $argumentResolver;
 
-    public function __construct(UrlMatcher $matcher,
-    ControllerResolver $controllerResolver,
-    ArgumentResolver $argumentResolver) {
+    public function __construct(UrlMatcher $matcher, ControllerResolver $controllerResolver, ArgumentResolver $argumentResolver)
+    {
         $this->matcher = $matcher;
         $this->controllerResolver = $controllerResolver;
         $this->argumentResolver = $argumentResolver;
     }
 
-    public function handle(Request $request) {
+    public function handle(Request $request)
+    {
         //return new Response('', 404);
         try {
             $this->matcher->getContext()->fromRequest($request);
@@ -36,16 +36,17 @@ class Framework {
             $arguments =
                   $this->argumentResolver->getArguments($request, $controller);
 
-            $controller_return = call_user_func_array($controller, $arguments);
+            $controllerReturn = call_user_func_array($controller, $arguments);
 
-            if ($controller_return instanceof Response) {
-                $response = $controller_return;
-            }else{
-                $rendered = (new RenderArray())->preHandle($controller_return);
+            if ($controllerReturn instanceof Response) {
+                $response = $controllerReturn;
+            }else {
+                $rendered = (new RenderArray())->preHandle($controllerReturn);
                 $response = new Response($rendered);
             }
+
             return $response;
-        } catch (ResourceNotFoundException $e) {
+        }catch (ResourceNotFoundException $e) {
             return new Response('Not Found!!', 404);
         }   catch (Exception $e) {
             return new Response('An Error Occured!', 500);

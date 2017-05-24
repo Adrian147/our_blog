@@ -1,15 +1,15 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
 
-    use Symfony\Component\HttpFoundation;
+    use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\Routing;
-    use Symfony\Component\HttpKernel;
+    use Symfony\Component\HttpKernel\Controller;
     use Simplex\Framework;
     use TestBlog\Controller\BlogController;
 
-    $request = HttpFoundation\Request::createFromGlobals();
-    $controllerResolver = new HttpKernel\Controller\ControllerResolver();
-    $argumentResolver = new HttpKernel\Controller\ArgumentResolver();
+    $request = Request::createFromGlobals();
+    $controllerResolver = new Controller\ControllerResolver();
+    $argumentResolver = new Controller\ArgumentResolver();
 
     $routes = new Routing\RouteCollection();
     require __DIR__.'/../src/routes.php';
