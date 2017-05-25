@@ -138,4 +138,20 @@ class BlogModel
 
         return $posts;
     }
+
+    /**
+     * Returns 404 Error Message.
+     *
+     * @return $renderArray array for the 404 page
+     */
+    public function page404Error()
+    {
+        $renderArray = array(
+            'type' => 'page',
+            'title' => '404 Error: Content Not Found',
+            'body' => 'Sorry, we could not find what you were looking for.',
+        );
+
+        return $renderArray;
+    }
 }
