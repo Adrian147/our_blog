@@ -78,7 +78,7 @@ class BlogModel
             'title' => $tag['tag'],
         );
         if (count($posts) == 0) {
-            $renderArray['body'] = 'Sorry, blogs are not using this tag.';
+            $renderArray['body'] = 'Sorry, blog posts are not using this tag.';
         } else {
             $renderArray['body'] = array(array(
                 'type' => 'table',

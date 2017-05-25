@@ -42,7 +42,6 @@ class Framework
      */
     public function handle(Request $request)
     {
-        //return new Response('', 404);
         try {
             $this->matcher->getContext()->fromRequest($request);
 
