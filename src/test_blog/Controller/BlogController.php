@@ -25,7 +25,8 @@ class BlogController
         if ($post != '') {
             $tagIds = DBModel::getTagsbyBlogId($id);
             $tags = BlogModel::tagsfromTagIds($tagIds);
-            $renderArray = BlogModel::pagetoRenderArray($post, $tags);
+            $url = $request->getBaseUrl();
+            $renderArray = BlogModel::pagetoRenderArray($post, $tags, $url);
         } else {
             $renderArray = new HttpFoundation\Response('Resource Not Found');
         }
