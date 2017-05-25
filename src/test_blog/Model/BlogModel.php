@@ -44,7 +44,7 @@ class BlogModel
      * @param $tags tag data associated with post
      * @return $renderArray array for the page rendering
      */
-    public function pagetoRenderArray($post, $tags)
+    public function pagetoRenderArray($post, $tags, $url)
     {
         $renderArray = array(
             'type' => 'page',
@@ -56,7 +56,7 @@ class BlogModel
         foreach ($tags as $tag) {
             $renderArray['tags'][] = array(
                 'type' => 'link',
-                'url' => 'http://localhost:4321/tag/'.$tag['id'],
+                'url' => sprintf('%s/tag/%s', $url, $tag['id']),
                 'text' => $tag['tag']
             );
         }
@@ -77,17 +77,20 @@ class BlogModel
             'type' => 'page',
             'title' => $tag['tag'],
         );
+        if (count($posts) == 0) {
+            $renderArray['body'] = 'Sorry, blogs are not using this tag.';
+        } else {
+            $renderArray['body'] = array(array(
+                'type' => 'table',
+                'headers' => array_keys($posts[0]),
+                'rows' => array(),
+            ));
 
-        $renderArray['body'] = array(array(
-            'type' => 'table',
-            'headers' => array_keys($posts[0]),
-            'rows' => array(),
-        ));
-        //Setting up rows data;
-        foreach ($posts as $post) {
-            $renderArray['body'][0]['rows'][] = array_values($post);
+            //Setting up rows data;
+            foreach ($posts as $post) {
+                $renderArray['body'][0]['rows'][] = array_values($post);
+            }
         }
-
         return $renderArray;
     }
 
