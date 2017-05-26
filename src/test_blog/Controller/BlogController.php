@@ -44,7 +44,9 @@ class BlogController
     {
         $post = DBModel::getBlogEntries();
         if ($post != '') {
-            $renderArray = BlogModel::tabletoRenderArray($post, 'Blog Posts');
+            $title = 'Blog Posts';
+            $url = $request->getBaseUrl();
+            $renderArray = BlogModel::tabletoRenderArray($post, $title, $url);
         } else {
             $renderArray = BlogModel::page404Error();
         }
@@ -65,7 +67,8 @@ class BlogController
         if ($tag != '') {
             $blogIds = DBModel::getBlogsbyTagId($id);
             $posts = BlogModel::postsfromBlogIds($blogIds);
-            $renderArray = BlogModel::tagtoRenderArray($tag, $posts);
+            $url = $request->getBaseUrl();
+            $renderArray = BlogModel::tagtoRenderArray($tag, $posts, $url);
         } else {
             $renderArray = BlogModel::page404Error();
         }
