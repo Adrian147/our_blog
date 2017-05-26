@@ -28,7 +28,7 @@ class BlogController
             $url = $request->getBaseUrl();
             $renderArray = BlogModel::pagetoRenderArray($post, $tags, $url);
         } else {
-            $renderArray = new HttpFoundation\Response('Resource Not Found');
+            $renderArray = BlogModel::page404Error();
         }
 
         return $renderArray;
@@ -44,9 +44,11 @@ class BlogController
     {
         $post = DBModel::getBlogEntries();
         if ($post != '') {
-            $renderArray = BlogModel::tabletoRenderArray($post, 'Blog Posts');
+            $title = 'Blog Posts';
+            $url = $request->getBaseUrl();
+            $renderArray = BlogModel::tabletoRenderArray($post, $title, $url);
         } else {
-            $renderArray = new HttpFoundation\Response('Resource Not Found');
+            $renderArray = BlogModel::page404Error();
         }
 
         return $renderArray;
@@ -65,9 +67,10 @@ class BlogController
         if ($tag != '') {
             $blogIds = DBModel::getBlogsbyTagId($id);
             $posts = BlogModel::postsfromBlogIds($blogIds);
-            $renderArray = BlogModel::tagtoRenderArray($tag, $posts);
+            $url = $request->getBaseUrl();
+            $renderArray = BlogModel::tagtoRenderArray($tag, $posts, $url);
         } else {
-            $renderArray = new HttpFoundation\Response('Resource Not Found');
+            $renderArray = BlogModel::page404Error();
         }
 
         return $renderArray;

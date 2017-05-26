@@ -18,20 +18,22 @@ class BlogModel
      * @param $title main title to the rendered page
      * @return $renderArray array for the page
      */
-    public function tabletoRenderArray($posts, $title)
+    public function tabletoRenderArray($posts, $title, $url)
     {
         $renderArray = array(
             'type' => 'page',
             'title' => $title,
         );
-        $renderArray['body'] = array(array(
+        $renderArray['body'] = array(
             'type' => 'table',
             'headers' => array_keys($posts[0]),
             'rows' => array(),
-        ));
+        );
         //Setting up rows data;
         foreach ($posts as $post) {
-            $renderArray['body'][0]['rows'][] = array_values($post);
+            $post['title'] = sprintf('<a href="%s/blog/%d">%s</a>',
+                $url, $post['id'], $post['title']);
+            $renderArray['body']['rows'][] = array_values($post);
         }
 
         return $renderArray;
@@ -71,7 +73,7 @@ class BlogModel
      * @param $posts posts data associated with the tag
      * @return $renderArray array for the page rendering
      */
-    public function tagtoRenderArray($tag, $posts)
+    public function tagtoRenderArray($tag, $posts, $url)
     {
         $renderArray = array(
             'type' => 'page',
@@ -80,15 +82,17 @@ class BlogModel
         if (count($posts) == 0) {
             $renderArray['body'] = 'Sorry, blog posts are not using this tag.';
         } else {
-            $renderArray['body'] = array(array(
+            $renderArray['body'] = array(
                 'type' => 'table',
                 'headers' => array_keys($posts[0]),
                 'rows' => array(),
-            ));
+            );
 
             //Setting up rows data;
             foreach ($posts as $post) {
-                $renderArray['body'][0]['rows'][] = array_values($post);
+                $post['title'] = sprintf('<a href="%s/blog/%d">%s</a>',
+                    $url, $post['id'], $post['title']);
+                $renderArray['body']['rows'][] = array_values($post);
             }
         }
         return $renderArray;
@@ -137,5 +141,21 @@ class BlogModel
         }
 
         return $posts;
+    }
+
+    /**
+     * Returns 404 Error Message.
+     *
+     * @return $renderArray array for the 404 page
+     */
+    public function page404Error()
+    {
+        $renderArray = array(
+            'type' => 'page',
+            'title' => '404 Error: Content Not Found',
+            'body' => 'Sorry, we could not find what you were looking for.',
+        );
+
+        return $renderArray;
     }
 }
