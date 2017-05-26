@@ -5,6 +5,7 @@ namespace TestBlog\Model;
 use Symfony\Component\HttpFoundation;
 use PDO;
 
+
 /**
  * Define methods to interact with Database.
  */
@@ -17,8 +18,9 @@ class DBModel
      */
     public function startDBConnection()
     {
-        $conn = new PDO("mysql:host=127.0.0.1;dbname=testblog_db",
-                   'root', 'qwerty123');
+        require __DIR__.'/../../../db_config.php';
+        $conn = new PDO(sprintf('mysql:host=%s;dbname=%s', $host, $db_name),
+                   $user, $passwd);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $conn;
